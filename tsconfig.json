@@ -1,20 +1,11 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
+  "extends": ["@tsconfig/svelte/tsconfig.json"],
   "compilerOptions": {
     "baseUrl": ".",
     "moduleResolution": "node",
     "importHelpers": true,
-    "types": [
-      "svelte",
-      "node"
-    ],
-    "lib": [
-      "ESNext",
-      "DOM"
-    ]
+    "types": ["svelte", "node"],
+    "lib": ["ESNext", "DOM"]
   },
-  "include": [
-    "src/**/*",
-    "svelte-custom.d.ts"
-  ]
+  "include": ["src/**/*", "svelte-custom.d.ts"]
 }
