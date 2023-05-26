@@ -44,6 +44,12 @@
     "*.mdb": "sqlite",
     "*.ejs": "html"
   },
+  "[svelte]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+    "editor.maxTokenizationLineLength": 2500
+  },
   "[typescript]": {
     "editor.formatOnSave": true,
     "editor.tabSize": 2,
