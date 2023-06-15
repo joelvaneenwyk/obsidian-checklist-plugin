@@ -1,21 +1,23 @@
-name: Release Obsidian plugin
+name: Release Obsidian Plugin
 
 on:
   push:
     tags:
       - "*"
+  workflow_dispatch:
 
 env:
-  PLUGIN_NAME: obsidian-checklist-plugin
+  PLUGIN_NAME: obsidian-tasklist-plugin
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: "14.x"
 

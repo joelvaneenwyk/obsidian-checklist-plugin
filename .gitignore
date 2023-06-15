@@ -2,6 +2,11 @@
 *.iml
 .idea
 
+# yarn
+.yarn/cache
+.yarn/install-state.gz
+.pnp.*
+
 # npm
 node_modules
 
