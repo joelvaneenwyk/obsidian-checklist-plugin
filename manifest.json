@@ -1,6 +1,6 @@
 {
-  "id": "obsidian-tasklist-plugin",
-  "name": "Tasklist",
+  "id": "mycoshiro-tasklist",
+  "name": "Mycoshiro Tasklist",
   "version": "2.2.13",
   "minAppVersion": "0.14.5",
   "description": "Combines tasks from across pages into the sidebar.",

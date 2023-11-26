@@ -1,31 +1,33 @@
 <script lang="ts">
-  import type { App } from "obsidian"
+  import type { App } from 'obsidian';
 
-  import type { LookAndFeel, TodoGroup } from "src/_types"
-  import { navToFile } from "src/utils"
-  import ChecklistItem from "./ChecklistItem.svelte"
-  import Icon from "./Icon.svelte"
+  import type { LookAndFeel, TodoGroup } from 'src/@types/tasklist';
+  import { navToFile } from 'src/utils';
+  import ChecklistItem from './ChecklistItem.svelte';
+  import Icon from './Icon.svelte';
 
-  export let group: TodoGroup
-  export let isCollapsed: boolean
-  export let lookAndFeel: LookAndFeel
-  export let app: App
-  export let onToggle: (id: string) => void
+  export let group: TodoGroup;
+  export let isCollapsed: boolean;
+  export let lookAndFeel: LookAndFeel;
+  export let app: App;
+  export let onToggle: (id: string) => void;
 
-  function clickTitle(ev: MouseEvent) {
-    if (group.type === "page") navToFile(app, group.id, ev)
+  function clickTitle(ev: MouseEvent | KeyboardEvent) {
+    if (group.type === 'page') {
+      navToFile(app, group.id, ev);
+    }
   }
 </script>
 
 <section class="group {group.className}">
   <header class={`group-header ${group.type}`}>
-    <div class="title" on:click={clickTitle}>
-      {#if group.type === "page"}
+    <div class="title" on:click={clickTitle} on:keydown={clickTitle} role="button" tabindex=0>
+      {#if group.type === 'page'}
         {group.pageName}
       {:else if group.mainTag}
         <span class="tag-base">#</span>
-        <span class={group.subTags == null ? "tag-sub" : "tag-base"}
-          >{`${group.mainTag}${group.subTags != null ? "/" : ""}`}</span
+        <span class={group.subTags == null ? 'tag-sub' : 'tag-base'}
+          >{`${group.mainTag}${group.subTags != null ? '/' : ''}`}</span
         >
         {#if group.subTags != null}
           <span class="tag-sub">{group.subTags}</span>
@@ -37,7 +39,7 @@
     <div class="space" />
     <div class="count">{group.todos.length}</div>
     <button class="collapse" on:click={() => onToggle(group.id)} title="Toggle Group">
-      <Icon name="chevron" direction={isCollapsed ? "left" : "down"} />
+      <Icon name="chevron" direction={isCollapsed ? 'left' : 'down'} />
     </button>
   </header>
   {#if !isCollapsed}

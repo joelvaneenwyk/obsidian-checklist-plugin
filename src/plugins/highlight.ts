@@ -1,5 +1,6 @@
-import {regexPlugin} from './plugin-helper'
+import { regexPlugin } from './plugin-helper';
 
-export const highlightPlugin = regexPlugin(/\=\=([^\=]+)\=\=/, (match: string[], utils: any) => {
-  return `<mark>${utils.escape(match[1])}</mark>`
-})
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const highlightPlugin = regexPlugin(/==([^=]+)==/, (match: string[], utils: any) => {
+  return `<mark>${utils.escape(match[1])}</mark>`;
+});

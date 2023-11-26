@@ -1,17 +1,28 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Svelte",
-  "_version": "4.0.0",
-
-  "extends": ["@tsconfig/svelte/tsconfig.json"],
-
+  "extends": [
+    "@tsconfig/svelte/tsconfig.json"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "moduleResolution": "node",
     "importHelpers": true,
-    "types": ["svelte", "node"],
-    "lib": ["ESNext", "DOM"]
+    "plugins": [
+      {
+        "name": "typescript-svelte-plugin"
+      }
+    ],
+    "types": [
+      "svelte",
+      "node"
+    ],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ]
   },
-
-  "include": ["src/**/*", "svelte-custom.d.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.svelte"
+  ]
 }

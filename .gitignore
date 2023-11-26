@@ -25,5 +25,4 @@ constrants.js
 # other
 .DS_Store
 
-yarn.lock
-data.json
+# data.json

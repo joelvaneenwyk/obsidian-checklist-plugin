@@ -1,15 +1,15 @@
 <script lang="ts">
-  import Icon from "./Icon.svelte"
-  import { clickOutside } from "./clickOutside.directive"
+  import Icon from './Icon.svelte';
+  import { clickOutside } from './clickOutside.directive';
 
-  export let todoTags: string[]
-  export let hiddenTags: string[]
-  export let disableSearch: boolean
-  export let onTagStatusChange: (tag: string, status: boolean) => void
-  export let onSearch: (str: string) => void
+  export let todoTags: string[];
+  export let hiddenTags: string[];
+  export let disableSearch: boolean;
+  export let onTagStatusChange: (tag: string, status: boolean) => void;
+  export let onSearch: (str: string) => void;
 
-  let showPopover = false
-  let search = ""
+  let showPopover = false;
+  let search = '';
 </script>
 
 <div class="container">
@@ -25,14 +25,14 @@
       name="settings"
       style="button"
       on:click={(ev) => {
-        showPopover = !showPopover
+        showPopover = !showPopover;
       }}
     />
     {#if showPopover}
       <div
         use:clickOutside
         on:click_outside={(ev) => {
-          showPopover = false
+          showPopover = false;
         }}
         class="popover"
       >

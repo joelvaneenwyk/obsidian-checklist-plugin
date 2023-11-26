@@ -1,4 +1,4 @@
-# obsidian-tasklist-plugin
+# Mycoshiro - Obsidian Tasklist Plugin
 
 This plugin consolidates checklists from across files into a single view.
 

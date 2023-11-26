@@ -1,36 +1,36 @@
 <script lang="ts">
-  import type { App } from "obsidian"
+  import type { App } from 'obsidian';
+  import type { LookAndFeel, TodoItem } from 'src/@types/tasklist';
+  import { navToFile, toggleTodoItem } from 'src/utils';
+  import CheckCircle from './CheckCircle.svelte';
 
-  import type { LookAndFeel, TodoItem } from "src/_types"
-  import { navToFile, toggleTodoItem } from "src/utils"
-  import CheckCircle from "./CheckCircle.svelte"
+  export let item: TodoItem;
+  export let lookAndFeel: LookAndFeel;
+  export let app: App;
 
-  export let item: TodoItem
-  export let lookAndFeel: LookAndFeel
-  export let app: App
-
-  let contentDiv: HTMLDivElement
+  let contentDiv: HTMLDivElement;
 
   const toggleItem = async (item: TodoItem) => {
-    toggleTodoItem(item, app)
-  }
+    toggleTodoItem(item, app);
+  };
 
-  const handleClick = (ev: MouseEvent, item?: TodoItem) => {
-    const target: HTMLElement = ev.target as any
-    if (target.tagName === "A") {
-      ev.stopPropagation()
-      if (target.dataset.type === "link") {
-        navToFile(app, target.dataset.filepath, ev, item?.line)
-      } else if (target.dataset.type === "tag") {
+  const handleClick = (ev: MouseEvent | KeyboardEvent, item?: TodoItem) => {
+    const target: HTMLElement = ev.target as any;
+    if (target.tagName === 'A') {
+      ev.stopPropagation();
+      if (target.dataset.type === 'link') {
+        navToFile(app, target.dataset.filepath, ev, item?.line);
+      } else if (target.dataset.type === 'tag') {
         // goto tag
       }
+    } else {
+      navToFile(app, item?.filePath, ev, item?.line);
     }
-    else {
-      navToFile(app, item.filePath, ev, item?.line)
-    }
-  }
+  };
   $: {
-    if (contentDiv) contentDiv.innerHTML = item.rawHTML
+    if (contentDiv) {
+      contentDiv.innerHTML = item.rawHTML;
+    }
   }
 </script>
 
@@ -38,13 +38,20 @@
   <button
     class="toggle"
     on:click={(ev) => {
-      toggleItem(item)
-      ev.stopPropagation()
+      toggleItem(item);
+      ev.stopPropagation();
     }}
   >
     <CheckCircle checked={item.checked} />
   </button>
-  <div bind:this={contentDiv} on:click={(ev) => handleClick(ev, item)} class="content" />
+  <div
+    bind:this={contentDiv}
+    on:click={(ev) => handleClick(ev, item)}
+    on:keyup={(ev) => handleClick(ev, item)}
+    class="content"
+    role="button"
+    tabindex="0"
+  />
 </li>
 
 <style>

@@ -1,5 +1,6 @@
-import {regexPlugin} from './plugin-helper'
+import { regexPlugin } from './plugin-helper';
 
-export const commentPlugin = regexPlugin(/\%\%([^\%]+)\%\%/, (match: string[], utils: any) => {
-  return `<!--${utils.escape(match[1])}}-->`
-})
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const commentPlugin = regexPlugin(/%%([^%]+)%%/, (match: string[], utils: any) => {
+  return `<!--${utils.escape(match[1])}}-->`;
+});
