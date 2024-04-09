@@ -1,11 +1,11 @@
-import {Plugin} from 'obsidian'
+import { Plugin } from 'obsidian'
 
-import {TODO_VIEW_TYPE} from './constants'
-import {DEFAULT_SETTINGS, TodoSettings, TodoSettingTab} from './settings'
+import { TODO_VIEW_TYPE } from './constants'
+import { DEFAULT_SETTINGS, type TodoSettings, TodoSettingTab } from './settings'
 import TodoListView from './view'
 
 export default class TodoPlugin extends Plugin {
-  private settings: TodoSettings
+  private settings: TodoSettings = DEFAULT_SETTINGS
 
   get view() {
     return this.app.workspace.getLeavesOfType(TODO_VIEW_TYPE)[0]
@@ -22,10 +22,9 @@ export default class TodoPlugin extends Plugin {
       callback: () => {
         const workspace = this.app.workspace
         const views = workspace.getLeavesOfType(TODO_VIEW_TYPE)
-        if (views.length === 0) {
+        if (workspace !== null && views.length === 0) {
           workspace
-            .getRightLeaf(false)
-            .setViewState({
+            .getRightLeaf(false)?.setViewState({
               type: TODO_VIEW_TYPE,
               active: true,
             })
@@ -63,7 +62,7 @@ export default class TodoPlugin extends Plugin {
   initLeaf(): void {
     if (this.app.workspace.getLeavesOfType(TODO_VIEW_TYPE).length) return
 
-    this.app.workspace.getRightLeaf(false).setViewState({
+    this.app.workspace.getRightLeaf(false)?.setViewState({
       type: TODO_VIEW_TYPE,
       active: true,
     })
@@ -75,7 +74,7 @@ export default class TodoPlugin extends Plugin {
 
   async loadSettings() {
     const loadedData = await this.loadData()
-    this.settings = {...DEFAULT_SETTINGS, ...loadedData}
+    this.settings = { ...DEFAULT_SETTINGS, ...loadedData }
   }
 
   async updateSettings(updates: Partial<TodoSettings>) {

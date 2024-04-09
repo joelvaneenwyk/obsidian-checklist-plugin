@@ -8,6 +8,7 @@ import type {TodoSettings} from './settings'
 import type TodoPlugin from './main'
 import type {TodoGroup, TodoItem} from './_types'
 export default class TodoListView extends ItemView {
+  // @ts-ignore
   private _app: App
   private lastRerender = 0
   private groupedItems: TodoGroup[] = []
