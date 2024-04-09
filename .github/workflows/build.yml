@@ -22,10 +22,14 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install
+        id: install
+        run: |
+          npm install
+
       - name: Build
         id: build
         run: |
-          npm install
           npm run build
           mkdir ${{ env.PLUGIN_NAME }}
           cp main.js manifest.json styles.css ${{ env.PLUGIN_NAME }}
