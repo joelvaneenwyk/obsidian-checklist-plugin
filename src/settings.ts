@@ -1,7 +1,7 @@
-import {App, PluginSettingTab, Setting} from 'obsidian'
+import { App, PluginSettingTab, Setting } from 'obsidian'
 
 import type TodoPlugin from './main'
-import type {GroupByType, LookAndFeel, SortDirection} from './_types'
+import type { GroupByType, LookAndFeel, SortDirection } from './_types'
 
 export interface TodoSettings {
   todoPageName: string
@@ -79,7 +79,7 @@ export class TodoSettingTab extends PluginSettingTab {
       .addToggle(toggle => {
         toggle.setValue(this.plugin.getSettingValue('showChecked'))
         toggle.onChange(async value => {
-          await this.plugin.updateSettings({showChecked: value})
+          await this.plugin.updateSettings({ showChecked: value })
         })
       })
 
@@ -91,7 +91,7 @@ export class TodoSettingTab extends PluginSettingTab {
       .addToggle(toggle => {
         toggle.setValue(this.plugin.getSettingValue('showAllTodos'))
         toggle.onChange(async value => {
-          await this.plugin.updateSettings({showAllTodos: value})
+          await this.plugin.updateSettings({ showAllTodos: value })
         })
       })
 
@@ -103,8 +103,9 @@ export class TodoSettingTab extends PluginSettingTab {
       dropdown.addOption('page', 'Page')
       dropdown.addOption('tag', 'Tag')
       dropdown.setValue(this.plugin.getSettingValue('groupBy'))
+      // @ts-ignore
       dropdown.onChange(async (value: GroupByType) => {
-        await this.plugin.updateSettings({groupBy: value})
+        await this.plugin.updateSettings({ groupBy: value })
       })
     })
 
@@ -126,6 +127,7 @@ export class TodoSettingTab extends PluginSettingTab {
         dropdown.addOption('new->old', 'New -> Old')
         dropdown.addOption('old->new', 'Old -> New')
         dropdown.setValue(this.plugin.getSettingValue('sortDirectionItems'))
+        // @ts-ignore
         dropdown.onChange(async (value: SortDirection) => {
           await this.plugin.updateSettings({
             sortDirectionItems: value,
@@ -144,6 +146,7 @@ export class TodoSettingTab extends PluginSettingTab {
         dropdown.addOption('new->old', 'New -> Old')
         dropdown.addOption('old->new', 'Old -> New')
         dropdown.setValue(this.plugin.getSettingValue('sortDirectionGroups'))
+        // @ts-ignore
         dropdown.onChange(async (value: SortDirection) => {
           await this.plugin.updateSettings({
             sortDirectionGroups: value,
@@ -178,8 +181,9 @@ export class TodoSettingTab extends PluginSettingTab {
         dropdown.addOption('classic', 'Classic')
         dropdown.addOption('compact', 'Compact')
         dropdown.setValue(this.plugin.getSettingValue('lookAndFeel'))
+        // @ts-ignore
         dropdown.onChange(async (value: LookAndFeel) => {
-          await this.plugin.updateSettings({lookAndFeel: value})
+          await this.plugin.updateSettings({ lookAndFeel: value })
         })
       })
 
@@ -208,7 +212,7 @@ export class TodoSettingTab extends PluginSettingTab {
       .addToggle(toggle => {
         toggle.setValue(this.plugin.getSettingValue('autoRefresh'))
         toggle.onChange(async value => {
-          await this.plugin.updateSettings({autoRefresh: value})
+          await this.plugin.updateSettings({ autoRefresh: value })
         })
       })
       .setDesc(

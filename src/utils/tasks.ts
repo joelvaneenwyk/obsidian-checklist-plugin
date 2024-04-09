@@ -1,10 +1,10 @@
 import MD from 'markdown-it'
-import minimatch from 'minimatch'
+import { minimatch } from 'minimatch'
 
-import {commentPlugin} from '../plugins/comment'
-import {highlightPlugin} from '../plugins/highlight'
-import {linkPlugin} from '../plugins/link'
-import {tagPlugin} from '../plugins/tag'
+import { commentPlugin } from '../plugins/comment'
+import { highlightPlugin } from '../plugins/highlight'
+import { linkPlugin } from '../plugins/link'
+import { tagPlugin } from '../plugins/tag'
 import {
   combineFileLines,
   extractTextFromTodoLine,
@@ -31,7 +31,7 @@ import type {
   TFile,
   Vault,
 } from 'obsidian'
-import type {TodoItem, TagMeta, FileInfo} from 'src/_types'
+import type { TodoItem, TagMeta, FileInfo } from 'src/_types'
 
 /**
  * Finds all of the {@link TodoItem todos} in the {@link TFile files} that have been updated since the last re-render.
@@ -64,21 +64,25 @@ export const parseTodos = async (
     files
       .filter(file => {
         if (file.stat.mtime < lastRerender) return false
+        // @ts-ignore
         if (!includePattern.some(p => minimatch(file.path, p))) return false
         if (todoTags.length === 1 && todoTags[0] === '*') return true
         const fileCache = cache.getFileCache(file)
+        // @ts-ignore
         const allTags = getAllTagsFromMetadata(fileCache)
         const tagsOnPage = allTags.filter(tag =>
           todoTags.includes(retrieveTag(getTagMeta(tag)).toLowerCase()),
         )
         return tagsOnPage.length > 0
       })
+      // @ts-ignore
       .map<Promise<FileInfo>>(async file => {
         const fileCache = cache.getFileCache(file)
         const tagsOnPage =
           fileCache?.tags?.filter(e =>
             todoTags.includes(retrieveTag(getTagMeta(e.tag)).toLowerCase()),
           ) ?? []
+        // @ts-ignore
         const frontMatterTags = getFrontmatterTags(fileCache, todoTags)
         const hasFrontMatterTag = frontMatterTags.length > 0
         const parseEntireFile =
@@ -193,10 +197,12 @@ const formTodo = (
 ): TodoItem => {
   const relevantLinks = links
     .filter(link => link.position.start.line === lineNum)
-    .map(link => ({filePath: link.link, linkName: link.displayText}))
+    .map(link => ({ filePath: link.link, linkName: link.displayText }))
+  // @ts-ignore
   const linkMap = mapLinkMeta(relevantLinks)
   const rawText = extractTextFromTodoLine(line)
   const spacesIndented = getIndentationSpacesFromTodoLine(line)
+  // @ts-ignore
   const tagStripped = removeTagFromText(rawText, tagMeta?.main)
   const md = new MD()
     .use(commentPlugin)
@@ -209,12 +215,14 @@ const formTodo = (
     checked: todoLineIsChecked(line),
     filePath: file.file.path,
     fileName: file.file.name,
+    // @ts-ignore
     fileLabel: getFileLabelFromName(file.file.name),
     fileCreatedTs: file.file.stat.ctime,
     rawHTML: md.render(tagStripped),
     line: lineNum,
     spacesIndented,
     fileInfo: file,
+    // @ts-ignore
     originalText: rawText,
   }
 }

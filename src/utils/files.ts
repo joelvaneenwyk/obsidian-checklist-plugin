@@ -1,6 +1,6 @@
-import {App, MarkdownView, Keymap} from 'obsidian'
+import { App, MarkdownView, Keymap } from 'obsidian'
 
-import {ensureMdExtension, getFileFromPath} from './helpers'
+import { ensureMdExtension, getFileFromPath } from './helpers'
 
 export const navToFile = async (
   app: App,
@@ -15,6 +15,7 @@ export const navToFile = async (
   const leaf = app.workspace.getLeaf(mod)
   await leaf.openFile(file)
   if (line) {
+    // @ts-ignore
     app.workspace.getActiveViewOfType(MarkdownView).editor.setCursor(line)
   }
 }
@@ -24,6 +25,7 @@ export const hoverFile = (event: MouseEvent, app: App, filePath: string) => {
   const timeoutHandle = setTimeout(() => {
     app.workspace.trigger('link-hover', {}, targetElement, filePath, filePath)
   }, 800)
+  // @ts-ignore
   targetElement.addEventListener('mouseleave', () => {
     clearTimeout(timeoutHandle)
   })
