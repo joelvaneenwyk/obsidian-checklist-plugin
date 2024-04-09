@@ -1,6 +1,6 @@
-import { classifyString, sortGenericItemsInplace } from './helpers'
+import {classifyString, sortGenericItemsInplace} from './helpers'
 
-import type { TodoItem, TodoGroup, GroupByType, SortDirection } from 'src/_types'
+import type {TodoItem, TodoGroup, GroupByType, SortDirection} from 'src/_types'
 export const groupTodos = (
   items: TodoItem[],
   groupBy: GroupByType,

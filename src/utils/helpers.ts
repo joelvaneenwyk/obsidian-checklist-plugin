@@ -1,8 +1,8 @@
-import { type CachedMetadata, parseFrontMatterTags, TFile, Vault } from 'obsidian'
+import {type CachedMetadata, parseFrontMatterTags, TFile, Vault} from 'obsidian'
 
-import { LOCAL_SORT_OPT } from '../constants'
+import {LOCAL_SORT_OPT} from '../constants'
 
-import type { SortDirection, TagMeta, LinkMeta, KeysOfType } from 'src/_types'
+import type {SortDirection, TagMeta, LinkMeta, KeysOfType} from 'src/_types'
 export const isMacOS = () => window.navigator.userAgent.includes('Macintosh')
 export const classifyString = (str: string) => {
   const sanitzedGroupName = (str ?? '').replace(/[^A-Za-z0-9]/g, '')
@@ -25,9 +25,9 @@ export const removeTagFromText = (text: string, tag: string) => {
 export const getTagMeta = (tag: string): TagMeta => {
   const tagMatch = /^\#([^\/]+)\/?(.*)?$/.exec(tag)
   // @ts-ignore
-  if (!tagMatch) return { main: null, sub: null }
+  if (!tagMatch) return {main: null, sub: null}
   const [full, main, sub] = tagMatch
-  return { main, sub }
+  return {main, sub}
 }
 
 export const retrieveTag = (tagMeta: TagMeta): string => {
