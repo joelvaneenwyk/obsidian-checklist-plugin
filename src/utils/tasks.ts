@@ -23,14 +23,7 @@ import {
   todoLineIsChecked,
 } from './helpers'
 
-import type {
-  App,
-  LinkCache,
-  MetadataCache,
-  TagCache,
-  TFile,
-  Vault,
-} from 'obsidian'
+import type {App, LinkCache, MetadataCache, TagCache, TFile, Vault} from 'obsidian'
 import type {TodoItem, TagMeta, FileInfo} from 'src/_types'
 
 /**
@@ -57,9 +50,7 @@ export const parseTodos = async (
   showAllTodos: boolean,
   lastRerender: number,
 ): Promise<Map<TFile, TodoItem[]>> => {
-  const includePattern = includeFiles.trim()
-    ? includeFiles.trim().split('\n')
-    : ['**/*']
+  const includePattern = includeFiles.trim() ? includeFiles.trim().split('\n') : ['**/*']
   const filesWithCache = await Promise.all(
     files
       .filter(file => {
@@ -70,23 +61,18 @@ export const parseTodos = async (
         const fileCache = cache.getFileCache(file)
         // @ts-ignore
         const allTags = getAllTagsFromMetadata(fileCache)
-        const tagsOnPage = allTags.filter(tag =>
-          todoTags.includes(retrieveTag(getTagMeta(tag)).toLowerCase()),
-        )
+        const tagsOnPage = allTags.filter(tag => todoTags.includes(retrieveTag(getTagMeta(tag)).toLowerCase()))
         return tagsOnPage.length > 0
       })
       // @ts-ignore
       .map<Promise<FileInfo>>(async file => {
         const fileCache = cache.getFileCache(file)
         const tagsOnPage =
-          fileCache?.tags?.filter(e =>
-            todoTags.includes(retrieveTag(getTagMeta(e.tag)).toLowerCase()),
-          ) ?? []
+          fileCache?.tags?.filter(e => todoTags.includes(retrieveTag(getTagMeta(e.tag)).toLowerCase())) ?? []
         // @ts-ignore
         const frontMatterTags = getFrontmatterTags(fileCache, todoTags)
         const hasFrontMatterTag = frontMatterTags.length > 0
-        const parseEntireFile =
-          todoTags[0] === '*' || hasFrontMatterTag || showAllTodos
+        const parseEntireFile = todoTags[0] === '*' || hasFrontMatterTag || showAllTodos
         const content = await vault.cachedRead(file)
         return {
           content,
@@ -120,18 +106,13 @@ export const toggleTodoItem = async (item: TodoItem, app: App) => {
   const currentFileContents = await app.vault.read(file)
   const currentFileLines = getAllLinesFromFile(currentFileContents)
   if (!currentFileLines[item.line].includes(item.originalText)) return
-  const newData = setTodoStatusAtLineTo(
-    currentFileLines,
-    item.line,
-    !item.checked,
-  )
+  const newData = setTodoStatusAtLineTo(currentFileLines, item.line, !item.checked)
   app.vault.modify(file, newData)
   item.checked = !item.checked
 }
 
 const findAllTodosInFile = (file: FileInfo): TodoItem[] => {
-  if (!file.parseEntireFile)
-    return file.validTags.flatMap(tag => findAllTodosFromTagBlock(file, tag))
+  if (!file.parseEntireFile) return file.validTags.flatMap(tag => findAllTodosFromTagBlock(file, tag))
 
   if (!file.content) return []
   const fileLines = getAllLinesFromFile(file.content)
@@ -142,9 +123,7 @@ const findAllTodosInFile = (file: FileInfo): TodoItem[] => {
   if (file.cache?.embeds) {
     links.push(...file.cache.embeds)
   }
-  const tagMeta = file.frontmatterTag
-    ? getTagMeta(file.frontmatterTag)
-    : undefined
+  const tagMeta = file.frontmatterTag ? getTagMeta(file.frontmatterTag) : undefined
 
   const todos: TodoItem[] = []
   for (let i = 0; i < fileLines.length; i++) {
@@ -188,13 +167,7 @@ const findAllTodosFromTagBlock = (file: FileInfo, tag: TagCache) => {
   return todos
 }
 
-const formTodo = (
-  line: string,
-  file: FileInfo,
-  links: LinkCache[],
-  lineNum: number,
-  tagMeta?: TagMeta,
-): TodoItem => {
+const formTodo = (line: string, file: FileInfo, links: LinkCache[], lineNum: number, tagMeta?: TagMeta): TodoItem => {
   const relevantLinks = links
     .filter(link => link.position.start.line === lineNum)
     .map(link => ({filePath: link.link, linkName: link.displayText}))
@@ -204,11 +177,7 @@ const formTodo = (
   const spacesIndented = getIndentationSpacesFromTodoLine(line)
   // @ts-ignore
   const tagStripped = removeTagFromText(rawText, tagMeta?.main)
-  const md = new MD()
-    .use(commentPlugin)
-    .use(linkPlugin(linkMap))
-    .use(tagPlugin)
-    .use(highlightPlugin)
+  const md = new MD().use(commentPlugin).use(linkPlugin(linkMap)).use(tagPlugin).use(highlightPlugin)
   return {
     mainTag: tagMeta?.main,
     subTag: tagMeta?.sub,
@@ -227,11 +196,7 @@ const formTodo = (
   }
 }
 
-const setTodoStatusAtLineTo = (
-  fileLines: string[],
-  line: number,
-  setTo: boolean,
-) => {
+const setTodoStatusAtLineTo = (fileLines: string[], line: number, setTo: boolean) => {
   fileLines[line] = setLineTo(fileLines[line], setTo)
   return combineFileLines(fileLines)
 }

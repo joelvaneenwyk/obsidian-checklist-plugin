@@ -1,7 +1,5 @@
 // I realized this isn't plausible because creating workers via blob limits to inline code only and doesn't allow calls to other functions
-export const workerizeFunction = async <T extends (...args: any) => any>(
-  fn: T,
-) => {
+export const workerizeFunction = async <T extends (...args: any) => any>(fn: T) => {
   const functionWrapper = (id: string, args: Parameters<T>) => {
     fn()
   }
