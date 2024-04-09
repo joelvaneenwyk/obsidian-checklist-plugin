@@ -1,10 +1,10 @@
 import MD from 'markdown-it'
-import { minimatch } from 'minimatch'
+import {minimatch} from 'minimatch'
 
-import { commentPlugin } from '../plugins/comment'
-import { highlightPlugin } from '../plugins/highlight'
-import { linkPlugin } from '../plugins/link'
-import { tagPlugin } from '../plugins/tag'
+import {commentPlugin} from '../plugins/comment'
+import {highlightPlugin} from '../plugins/highlight'
+import {linkPlugin} from '../plugins/link'
+import {tagPlugin} from '../plugins/tag'
 import {
   combineFileLines,
   extractTextFromTodoLine,
@@ -31,7 +31,7 @@ import type {
   TFile,
   Vault,
 } from 'obsidian'
-import type { TodoItem, TagMeta, FileInfo } from 'src/_types'
+import type {TodoItem, TagMeta, FileInfo} from 'src/_types'
 
 /**
  * Finds all of the {@link TodoItem todos} in the {@link TFile files} that have been updated since the last re-render.
@@ -197,7 +197,7 @@ const formTodo = (
 ): TodoItem => {
   const relevantLinks = links
     .filter(link => link.position.start.line === lineNum)
-    .map(link => ({ filePath: link.link, linkName: link.displayText }))
+    .map(link => ({filePath: link.link, linkName: link.displayText}))
   // @ts-ignore
   const linkMap = mapLinkMeta(relevantLinks)
   const rawText = extractTextFromTodoLine(line)

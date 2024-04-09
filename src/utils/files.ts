@@ -1,6 +1,6 @@
-import { App, MarkdownView, Keymap } from 'obsidian'
+import {App, MarkdownView, Keymap} from 'obsidian'
 
-import { ensureMdExtension, getFileFromPath } from './helpers'
+import {ensureMdExtension, getFileFromPath} from './helpers'
 
 export const navToFile = async (
   app: App,
