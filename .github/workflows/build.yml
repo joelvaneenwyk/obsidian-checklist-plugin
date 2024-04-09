@@ -1,0 +1,52 @@
+name: Build Obsidian Plugin
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+env:
+  PLUGIN_NAME: obsidian-tasklist-plugin
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install
+        id: install
+        run: |
+          npm install
+
+      - name: Build
+        id: build
+        run: |
+          npm run build
+          mkdir ${{ env.PLUGIN_NAME }}
+          cp main.js manifest.json styles.css ${{ env.PLUGIN_NAME }}
+          zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
+
+      - name: Create Release
+        id: create_release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2.0.4
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          VERSION: ${{ github.ref }}
+        with:
+          draft: false
+          prerelease: false
+          files: |
+            ./${{ env.PLUGIN_NAME }}.zip
+            ./main.js
+            ./manifest.json
+            ./styles.css
