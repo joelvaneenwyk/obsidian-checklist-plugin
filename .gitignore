@@ -5,11 +5,6 @@
 # npm
 node_modules
 
-# build
-dist
-main.js
-*.js.map
-
 # other
 .DS_Store
 
