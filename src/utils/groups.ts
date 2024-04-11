@@ -12,9 +12,7 @@ export const groupTodos = (
   const groups: TodoGroup[] = []
   for (const item of items) {
     const itemKey =
-      groupBy === 'page'
-        ? item.filePath
-        : `#${[item.mainTag, item.subTag].filter(e => e != null).join('/')}`
+      groupBy === 'page' ? item.filePath : `#${[item.mainTag, item.subTag].filter(e => e != null).join('/')}`
     let group = groups.find(g => g.id === itemKey)
     if (!group) {
       const newGroup: TodoGroup = {
@@ -35,17 +33,13 @@ export const groupTodos = (
         newGroup.mainTag = item.mainTag
         newGroup.subTags = item.subTag
         newGroup.sortName = item.mainTag + (item.subTag ?? '0')
-        newGroup.className = classifyString(
-          (newGroup.mainTag ?? '') + (newGroup.subTags ?? ''),
-        )
+        newGroup.className = classifyString((newGroup.mainTag ?? '') + (newGroup.subTags ?? ''))
       }
       groups.push(newGroup)
       group = newGroup
     }
-    if (group.newestItem < item.fileCreatedTs)
-      group.newestItem = item.fileCreatedTs
-    if (group.oldestItem > item.fileCreatedTs)
-      group.oldestItem = item.fileCreatedTs
+    if (group.newestItem < item.fileCreatedTs) group.newestItem = item.fileCreatedTs
+    if (group.oldestItem > item.fileCreatedTs) group.oldestItem = item.fileCreatedTs
 
     group.todos.push(item)
   }
@@ -59,14 +53,7 @@ export const groupTodos = (
     sortGroups === 'new->old' ? 'newestItem' : 'oldestItem',
   )
 
-  if (!subGroups)
-    for (const g of groups)
-      sortGenericItemsInplace(
-        g.todos,
-        sortItems,
-        'originalText',
-        'fileCreatedTs',
-      )
+  if (!subGroups) for (const g of groups) sortGenericItemsInplace(g.todos, sortItems, 'originalText', 'fileCreatedTs')
   else
     for (const g of nonEmptyGroups)
       g.groups = groupTodos(

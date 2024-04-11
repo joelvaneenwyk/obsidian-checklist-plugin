@@ -44,9 +44,7 @@ export default class TodoListView extends ItemView {
   }
 
   get visibleTodoTagArray() {
-    return this.todoTagArray.filter(
-      t => !this.plugin.getSettingValue('_hiddenTags').includes(t),
-    )
+    return this.todoTagArray.filter(t => !this.plugin.getSettingValue('_hiddenTags').includes(t))
   }
 
   async onClose() {
@@ -64,9 +62,7 @@ export default class TodoListView extends ItemView {
         await this.refresh()
       }),
     )
-    this.registerEvent(
-      this.app.vault.on('delete', file => this.deleteFile(file.path)),
-    )
+    this.registerEvent(this.app.vault.on('delete', file => this.deleteFile(file.path)))
     this.refresh()
   }
 
@@ -100,8 +96,7 @@ export default class TodoListView extends ItemView {
       _hiddenTags: this.plugin.getSettingValue('_hiddenTags'),
       app: this.app,
       todoGroups: this.groupedItems,
-      updateSetting: (updates: Partial<TodoSettings>) =>
-        this.plugin.updateSettings(updates),
+      updateSetting: (updates: Partial<TodoSettings>) => this.plugin.updateSettings(updates),
       onSearch: (val: string) => {
         this.searchTerm = val
         this.refresh()

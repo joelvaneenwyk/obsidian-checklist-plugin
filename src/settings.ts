@@ -74,14 +74,12 @@ export class TodoSettingTab extends PluginSettingTab {
           }),
       )
 
-    new Setting(this.containerEl)
-      .setName('Show Completed?')
-      .addToggle(toggle => {
-        toggle.setValue(this.plugin.getSettingValue('showChecked'))
-        toggle.onChange(async value => {
-          await this.plugin.updateSettings({showChecked: value})
-        })
+    new Setting(this.containerEl).setName('Show Completed?').addToggle(toggle => {
+      toggle.setValue(this.plugin.getSettingValue('showChecked'))
+      toggle.onChange(async value => {
+        await this.plugin.updateSettings({showChecked: value})
       })
+    })
 
     new Setting(this.containerEl)
       .setName('Show All Todos In File?')
@@ -134,9 +132,7 @@ export class TodoSettingTab extends PluginSettingTab {
           })
         })
       })
-      .setDesc(
-        'Time sorts are based on last time the file for a particular item was edited',
-      )
+      .setDesc('Time sorts are based on last time the file for a particular item was edited')
 
     new Setting(this.containerEl)
       .setName('Group Sort')
@@ -153,9 +149,7 @@ export class TodoSettingTab extends PluginSettingTab {
           })
         })
       })
-      .setDesc(
-        'Time sorts are based on last time the file for the newest or oldest item in a group was edited',
-      )
+      .setDesc('Time sorts are based on last time the file for the newest or oldest item in a group was edited')
 
     // new Setting(this.containerEl)
     //   .setName("Sub-Group Sort")
@@ -175,17 +169,15 @@ export class TodoSettingTab extends PluginSettingTab {
 
     new Setting(this.containerEl).setName('Styling')
 
-    new Setting(this.containerEl)
-      .setName('Look and Feel')
-      .addDropdown(dropdown => {
-        dropdown.addOption('classic', 'Classic')
-        dropdown.addOption('compact', 'Compact')
-        dropdown.setValue(this.plugin.getSettingValue('lookAndFeel'))
-        // @ts-ignore
-        dropdown.onChange(async (value: LookAndFeel) => {
-          await this.plugin.updateSettings({lookAndFeel: value})
-        })
+    new Setting(this.containerEl).setName('Look and Feel').addDropdown(dropdown => {
+      dropdown.addOption('classic', 'Classic')
+      dropdown.addOption('compact', 'Compact')
+      dropdown.setValue(this.plugin.getSettingValue('lookAndFeel'))
+      // @ts-ignore
+      dropdown.onChange(async (value: LookAndFeel) => {
+        await this.plugin.updateSettings({lookAndFeel: value})
       })
+    })
 
     /** ADVANCED */
 
@@ -198,13 +190,11 @@ export class TodoSettingTab extends PluginSettingTab {
       )
       .setTooltip('**/*')
       .addText(text =>
-        text
-          .setValue(this.plugin.getSettingValue('includeFiles'))
-          .onChange(async value => {
-            await this.plugin.updateSettings({
-              includeFiles: value,
-            })
-          }),
+        text.setValue(this.plugin.getSettingValue('includeFiles')).onChange(async value => {
+          await this.plugin.updateSettings({
+            includeFiles: value,
+          })
+        }),
       )
 
     new Setting(this.containerEl)

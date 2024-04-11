@@ -8,8 +8,7 @@ export default class TodoPlugin extends Plugin {
   private settings: TodoSettings = DEFAULT_SETTINGS
 
   get view() {
-    return this.app.workspace.getLeavesOfType(TODO_VIEW_TYPE)[0]
-      ?.view as TodoListView
+    return this.app.workspace.getLeavesOfType(TODO_VIEW_TYPE)[0]?.view as TodoListView
   }
 
   async onload() {
@@ -81,11 +80,7 @@ export default class TodoPlugin extends Plugin {
   async updateSettings(updates: Partial<TodoSettings>) {
     Object.assign(this.settings, updates)
     await this.saveData(this.settings)
-    const onlyRepaintWhenChanges = [
-      'autoRefresh',
-      'lookAndFeel',
-      '_collapsedSections',
-    ]
+    const onlyRepaintWhenChanges = ['autoRefresh', 'lookAndFeel', '_collapsedSections']
     const onlyReGroupWhenChanges = [
       'subGroups',
       'groupBy',
@@ -93,12 +88,8 @@ export default class TodoPlugin extends Plugin {
       'sortDirectionSubGroups',
       'sortDirectionItems',
     ]
-    if (onlyRepaintWhenChanges.includes(Object.keys(updates)[0]))
-      this.view.rerender()
-    else
-      this.view.refresh(
-        !onlyReGroupWhenChanges.includes(Object.keys(updates)[0]),
-      )
+    if (onlyRepaintWhenChanges.includes(Object.keys(updates)[0])) this.view.rerender()
+    else this.view.refresh(!onlyReGroupWhenChanges.includes(Object.keys(updates)[0]))
   }
 
   getSettingValue<K extends keyof TodoSettings>(setting: K): TodoSettings[K] {

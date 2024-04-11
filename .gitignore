@@ -1,6 +1,6 @@
 # Intellij
 *.iml
-.idea
+.vs/
 
 # npm
 node_modules
@@ -9,7 +9,6 @@ node_modules
 dist
 main.js
 *.js.map
-
 
 # other
 .DS_Store

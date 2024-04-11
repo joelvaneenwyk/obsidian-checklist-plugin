@@ -16,15 +16,9 @@ let counter = 0
 
 export const regexPlugin = (
   regexp: RegExp,
-  replacer: (
-    match: string[],
-    utils: {escape: (html: string) => string},
-  ) => string,
+  replacer: (match: string[], utils: {escape: (html: string) => string}) => string,
 ) => {
-  const flags =
-    (regexp.global ? 'g' : '') +
-    (regexp.multiline ? 'm' : '') +
-    (regexp.ignoreCase ? 'i' : '')
+  const flags = (regexp.global ? 'g' : '') + (regexp.multiline ? 'm' : '') + (regexp.ignoreCase ? 'i' : '')
   const _regexp = RegExp('^' + regexp.source, flags)
   const id = 'regexp-' + counter++
 
