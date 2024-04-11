@@ -15,9 +15,9 @@
 3. Disable "Safe mode" from Settings > Community Plugins
 4. Create a symlink to your cloned & build project (see above)
 
-```bash
-ln -s ~/repos/obsidian-checklist/ ~/obsidian-dev-vault/.obsidian/plugins/obsidian-checklist
-```
+   ```bash
+   ln -s ~/repos/obsidian-checklist/ ~/obsidian-dev-vault/.obsidian/plugins/obsidian-checklist
+   ```
 
 5. Make changes & compile the repository, then make sure to reload the changes in Obsidian from Community Plugins > Installed plugins. (Note: this may require restarting obsidian at times, possibly due to caching, if the refresh doesn't work)
 
@@ -25,4 +25,6 @@ ln -s ~/repos/obsidian-checklist/ ~/obsidian-dev-vault/.obsidian/plugins/obsidia
 
 1. Manually copy the compiled `main.js` into your development vault's folder this plugin, i.e. `.obsidian\plugins\obsidian-checklist`, with a different folder name if you prefer.
 
-# Troubleshooting
+## Troubleshooting
+
+...

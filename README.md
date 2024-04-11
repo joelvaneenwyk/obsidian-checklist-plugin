@@ -1,7 +1,6 @@
 # Obsidian Checklist
 
-> **Looking for Maintainer Help**
-> There's quite a bit of work to do on this plugin still and i've been neglecting it because work is too busy. I would love some help, or at least someone who could approve PRs and triage issues. Send me an email at <delashum@gmail.com> if you're interested.
+> ⚠️ This is a fork of the excellent [obsidian-checklist-plugin](https://github.com/delashum/obsidian-checklist-plugin) created by [delashum](https://github.com/delashum). Intention of this repository is to experiment with the plugin to see if it is possible to help with maintaining the plugin over time and potentially adding new features.
 
 This plugin for [Obsidian](https://obsidian.md/) consolidates checklists from across files into a single view.
 
