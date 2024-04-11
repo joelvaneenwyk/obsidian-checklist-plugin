@@ -1,5 +1,5 @@
 {
-  "name": "obsidian-checklist-plugin",
+  "name": "obsidian-checklist",
   "version": "2.2.13",
   "description": "A plugin for Obsidian.md which consolidates todo items into a single view.",
   "main": "main.js",
@@ -13,7 +13,7 @@
   "keywords": [
     "obsidian"
   ],
-  "author": "delashum",
+  "author": "joelvaneenwyk",
   "license": "MIT",
   "dependencies": {
     "@tsconfig/svelte": "^5.0.4",

@@ -1,6 +1,6 @@
 ## Issues
 
-1. Create issue for review in [delashum/obsidian-checklist-plugin/issues](https://github.com/delashum/obsidian-checklist-plugin/issues)
+1. Create issue for review in [joelvaneenwyk/obsidian-checklist/issues](https://github.com/joelvaneenwyk/obsidian-checklist/issues)
 2. If issue is approved for development, follow process below.
 
 ## Development
