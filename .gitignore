@@ -14,3 +14,5 @@ data.json
 dist/
 src/**/*.js
 src/**/*.js.map
+
+obsidian-checklist*.tgz
