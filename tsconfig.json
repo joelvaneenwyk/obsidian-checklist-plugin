@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "moduleResolution": "node",
     "importHelpers": true,
+    "outDir": "dist",
     "types": ["svelte", "node"],
     "lib": ["ESNext", "DOM"]
   },

@@ -10,3 +10,7 @@ node_modules
 
 yarn.lock
 data.json
+
+dist/
+src/**/*.js
+src/**/*.js.map
