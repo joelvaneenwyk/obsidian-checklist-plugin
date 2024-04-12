@@ -3,14 +3,14 @@ export const workerizeFunction = async <T extends (...args: any) => any>(fn: T) 
   const functionWrapper = (id: string, args: Parameters<T>) => {
     fn()
   }
-  var blobURL = URL.createObjectURL(
+  const blobURL = URL.createObjectURL(
     new Blob(['(', fn.toString(), ')()'], {
       type: 'application/javascript',
     }),
   )
   const worker = new Worker(blobURL)
 
-  return (...args: Parameters<T>): Promise<ReturnType<T>> => {
+  return (...args: T extends (...args: infer P) => any ? P : never[]): Promise<ReturnType<T>> => {
     const id = Math.random()
     worker.postMessage([id, args])
     const listener = () => {
