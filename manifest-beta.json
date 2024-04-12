@@ -1,4 +1,5 @@
 {
+  "manifest_version": 3,
   "id": "obsidian-checklist",
   "name": "Checklist",
   "version": "2.2.14-beta.2",
