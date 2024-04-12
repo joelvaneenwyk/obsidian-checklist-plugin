@@ -11839,7 +11839,7 @@ var TodoPlugin = class extends import_obsidian5.Plugin {
         var _a2
         const workspace = this.app.workspace
         const views = workspace.getLeavesOfType(TODO_VIEW_TYPE)
-        if (workspace !== null && views.length === 0) {
+        if (views.length === 0) {
           ;(_a2 = workspace.getRightLeaf(false)) == null
             ? void 0
             : _a2
@@ -11870,8 +11870,7 @@ var TodoPlugin = class extends import_obsidian5.Plugin {
       },
     })
     this.registerView(TODO_VIEW_TYPE, leaf => {
-      const newView = new TodoListView(leaf, this)
-      return newView
+      return new TodoListView(leaf, this)
     })
     if (this.app.workspace.layoutReady) this.initLeaf()
     else this.app.workspace.onLayoutReady(() => this.initLeaf())
@@ -11906,7 +11905,7 @@ var TodoPlugin = class extends import_obsidian5.Plugin {
       'sortDirectionItems',
     ]
     if (onlyRepaintWhenChanges.includes(Object.keys(updates)[0])) this.view.rerender()
-    else this.view.refresh(!onlyReGroupWhenChanges.includes(Object.keys(updates)[0]))
+    else await this.view.refresh(!onlyReGroupWhenChanges.includes(Object.keys(updates)[0]))
   }
   getSettingValue(setting) {
     return this.settings[setting]
