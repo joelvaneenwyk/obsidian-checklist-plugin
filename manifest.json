@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "id": "obsidian-checklist",
   "name": "Checklist",
-  "version": "2.2.13",
+  "version": "2.2.14",
   "minAppVersion": "0.14.5",
   "description": "Combines checklists across pages into users sidebar",
   "author": "delashum",
