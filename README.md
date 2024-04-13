@@ -10,7 +10,7 @@ This plugin for [Obsidian](https://obsidian.md/) consolidates checklists from ac
 
 After enabling this plugin, you will see the checklist appear in the right sidebar. If you do not you can run the `Checklist: Open View` command from the command palette to get it to appear.
 
-By default block of checklist items you tag with `#todo` will appear in this sidebar.
+By default, block of checklist items you tag with `#todo` will appear in this sidebar.
 
 You can complete checklist items by checking them off in your editor (e.g. `- [ ]` -> `- [x]`) or by clicking a checklist item in the sidebar which will update your `.md` file for you
 
@@ -26,7 +26,7 @@ You can complete checklist items by checking them off in your editor (e.g. `- [ 
 
 **Show All Todos In File?:** By default the plugin will only show tasks in the block that is tagged - changing this will show all tasks present in a file if the tag is present anywhere on the page.
 
-**Group by:** You can group by either file or tagname. If you choose to group by tag name they will appear in the order that they first appear in your files (or last depending on sort order)
+**Group by:** You can group by either file or tag name. If you choose to group by tag name they will appear in the order that they first appear in your files (or last depending on sort order)
 
 ![screenshot-tags](https://raw.githubusercontent.com/joelvaneenwyk/obsidian-checklist/develop/images/screenshot-sub-tag.png)
 

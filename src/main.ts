@@ -21,7 +21,7 @@ export default class TodoPlugin extends Plugin {
       callback: () => {
         const workspace = this.app.workspace
         const views = workspace.getLeavesOfType(TODO_VIEW_TYPE)
-        if (workspace !== null && views.length === 0) {
+        if (views.length === 0) {
           workspace
             .getRightLeaf(false)
             ?.setViewState({
@@ -31,6 +31,7 @@ export default class TodoPlugin extends Plugin {
             .then(() => {
               const todoLeaf = workspace.getLeavesOfType(TODO_VIEW_TYPE)[0]
               workspace.revealLeaf(todoLeaf)
+              // noinspection JSDeprecatedSymbols
               workspace.setActiveLeaf(todoLeaf, true, true)
             })
         } else {
@@ -39,6 +40,7 @@ export default class TodoPlugin extends Plugin {
             type: TODO_VIEW_TYPE,
           })
           workspace.revealLeaf(views[0])
+          // noinspection JSDeprecatedSymbols
           workspace.setActiveLeaf(views[0], true, true)
         }
       },
@@ -51,8 +53,7 @@ export default class TodoPlugin extends Plugin {
       },
     })
     this.registerView(TODO_VIEW_TYPE, leaf => {
-      const newView = new TodoListView(leaf, this)
-      return newView
+      return new TodoListView(leaf, this)
     })
 
     if (this.app.workspace.layoutReady) this.initLeaf()
@@ -89,7 +90,7 @@ export default class TodoPlugin extends Plugin {
       'sortDirectionItems',
     ]
     if (onlyRepaintWhenChanges.includes(Object.keys(updates)[0])) this.view.rerender()
-    else this.view.refresh(!onlyReGroupWhenChanges.includes(Object.keys(updates)[0]))
+    else await this.view.refresh(!onlyReGroupWhenChanges.includes(Object.keys(updates)[0]))
   }
 
   getSettingValue<K extends keyof TodoSettings>(setting: K): TodoSettings[K] {

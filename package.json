@@ -1,15 +1,16 @@
 {
   "name": "obsidian-checklist",
-  "version": "2.2.13",
+  "version": "2.2.14-beta.3",
   "description": "A plugin for Obsidian.md which consolidates todo items into a single view.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
-    "build:tsc": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "prepack": "npm run build",
     "build": "npm run build:tsc && npm run format",
+    "build:tsc": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
     "check": "prettier . --check",
     "format": "prettier . --write",
-    "version": "node version-bump.mjs && git add manifest.json versions.json"
+    "version": "node version-bump.mjs && git add manifest.json manifest-beta.json versions.json"
   },
   "packageManager": "npm@10.5.2+sha256.df0a1f7691654b94786013e5d5b80a873a7ffbae9c82c3bec8b5db76bc3b7dfd",
   "keywords": [
