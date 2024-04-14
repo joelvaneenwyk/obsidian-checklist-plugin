@@ -68,7 +68,10 @@ jobs:
         with:
           name: ${{ env.PLUGIN_NAME }}-zip
           path: |
-            ./${{ env.PLUGIN_NAME }}.zip
+            ./main.js
+            ./manifest.json
+            ./manifest-beta.json
+            ./styles.css
 
       - uses: actions/upload-artifact@v4
         name: Upload Main
