@@ -4,7 +4,7 @@ on:
   push:
     branches: [main, develop]
     tags:
-      - '*'
+      - "*"
   pull_request:
     branches: [main, develop]
   workflow_dispatch:
@@ -51,7 +51,6 @@ jobs:
         uses: softprops/action-gh-release@v2.0.4
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          VERSION: ${{ github.ref }}
         with:
           draft: false
           prerelease: false
