@@ -12,3 +12,6 @@ repos:
         language: node
         name: format
         entry: npm install && npm run format
+        verbose: true
+        types: [text]
+        stages: [pre-commit]
