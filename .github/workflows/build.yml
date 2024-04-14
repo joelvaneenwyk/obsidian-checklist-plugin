@@ -4,7 +4,7 @@ on:
   push:
     branches: [main, develop]
     tags:
-      - '*'
+      - "*"
   pull_request:
     branches: [main, develop]
   workflow_dispatch:
@@ -64,11 +64,36 @@ jobs:
             ./styles.css
 
       - uses: actions/upload-artifact@v4
+        name: Upload Zip
         with:
-          name: ${{ env.PLUGIN_NAME }}
+          name: ${{ env.PLUGIN_NAME }}-zip
           path: |
             ./${{ env.PLUGIN_NAME }}.zip
+
+      - uses: actions/upload-artifact@v4
+        name: Upload Main
+        with:
+          name: ${{ env.PLUGIN_NAME }}-main
+          path: |
             ./main.js
+
+      - uses: actions/upload-artifact@v4
+        name: Upload Manifest
+        with:
+          name: ${{ env.PLUGIN_NAME }}-manifest
+          path: |
             ./manifest.json
+
+      - uses: actions/upload-artifact@v4
+        name: Upload Beta Manifest
+        with:
+          name: ${{ env.PLUGIN_NAME }}-manifest-beta
+          path: |
             ./manifest-beta.json
+
+      - uses: actions/upload-artifact@v4
+        name: Upload Styles
+        with:
+          name: ${{ env.PLUGIN_NAME }}-styles
+          path: |
             ./styles.css
