@@ -2,6 +2,9 @@
 *.iml
 .vs/
 
+# python
+.venv/
+
 # npm
 node_modules
 
