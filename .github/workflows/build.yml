@@ -76,19 +76,23 @@ jobs:
       - uses: actions/upload-artifact@v4
         name: Upload Main
         with:
+          name: main.js
           path: main.js
 
       - uses: actions/upload-artifact@v4
         name: Upload Manifest
         with:
+          name: manifest.json
           path: manifest.json
 
       - uses: actions/upload-artifact@v4
         name: Upload Beta Manifest
         with:
+          name: manifest-beta.json
           path: manifest-beta.json
 
       - uses: actions/upload-artifact@v4
         name: Upload Styles
         with:
+          name: styles.css
           path: styles.css
