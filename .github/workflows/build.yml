@@ -66,7 +66,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         name: Upload Zip
         with:
-          name: ${{ env.PLUGIN_NAME }}-zip
+          name: ${{ env.PLUGIN_NAME }}.zip
           path: |
             ./main.js
             ./manifest.json
@@ -76,23 +76,19 @@ jobs:
       - uses: actions/upload-artifact@v4
         name: Upload Main
         with:
-          name: ${{ env.PLUGIN_NAME }}-main
           path: main.js
 
       - uses: actions/upload-artifact@v4
         name: Upload Manifest
         with:
-          name: ${{ env.PLUGIN_NAME }}-manifest
           path: manifest.json
 
       - uses: actions/upload-artifact@v4
         name: Upload Beta Manifest
         with:
-          name: ${{ env.PLUGIN_NAME }}-manifest-beta
           path: manifest-beta.json
 
       - uses: actions/upload-artifact@v4
         name: Upload Styles
         with:
-          name: ${{ env.PLUGIN_NAME }}-styles
           path: styles.css

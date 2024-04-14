@@ -20,7 +20,7 @@ repos:
       - id: format
         language: node
         name: format
-        entry: npm run format
+        entry: npm run format || npm run check
         pass_filenames: false
         verbose: true
         types: [text]
