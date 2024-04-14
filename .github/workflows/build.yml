@@ -18,6 +18,8 @@ jobs:
 
     permissions:
       contents: write
+      pull-requests: write
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -55,6 +57,16 @@ jobs:
           draft: false
           prerelease: false
           files: |
+            ./${{ env.PLUGIN_NAME }}.zip
+            ./main.js
+            ./manifest.json
+            ./manifest-beta.json
+            ./styles.css
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PLUGIN_NAME }}
+          path: |
             ./${{ env.PLUGIN_NAME }}.zip
             ./main.js
             ./manifest.json
