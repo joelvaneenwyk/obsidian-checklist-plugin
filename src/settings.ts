@@ -101,7 +101,7 @@ export class TodoSettingTab extends PluginSettingTab {
       dropdown.addOption('page', 'Page')
       dropdown.addOption('tag', 'Tag')
       dropdown.setValue(this.plugin.getSettingValue('groupBy'))
-      // @ts-ignore
+      // @ts-expect-error
       dropdown.onChange(async (value: GroupByType) => {
         await this.plugin.updateSettings({groupBy: value})
       })
@@ -125,7 +125,7 @@ export class TodoSettingTab extends PluginSettingTab {
         dropdown.addOption('new->old', 'New -> Old')
         dropdown.addOption('old->new', 'Old -> New')
         dropdown.setValue(this.plugin.getSettingValue('sortDirectionItems'))
-        // @ts-ignore
+        // @ts-expect-error
         dropdown.onChange(async (value: SortDirection) => {
           await this.plugin.updateSettings({
             sortDirectionItems: value,
@@ -142,7 +142,7 @@ export class TodoSettingTab extends PluginSettingTab {
         dropdown.addOption('new->old', 'New -> Old')
         dropdown.addOption('old->new', 'Old -> New')
         dropdown.setValue(this.plugin.getSettingValue('sortDirectionGroups'))
-        // @ts-ignore
+        // @ts-expect-error
         dropdown.onChange(async (value: SortDirection) => {
           await this.plugin.updateSettings({
             sortDirectionGroups: value,
@@ -173,7 +173,7 @@ export class TodoSettingTab extends PluginSettingTab {
       dropdown.addOption('classic', 'Classic')
       dropdown.addOption('compact', 'Compact')
       dropdown.setValue(this.plugin.getSettingValue('lookAndFeel'))
-      // @ts-ignore
+      // @ts-expect-error
       dropdown.onChange(async (value: LookAndFeel) => {
         await this.plugin.updateSettings({lookAndFeel: value})
       })

@@ -2,7 +2,13 @@
   "name": "obsidian-checklist",
   "version": "2.2.14-beta.3",
   "description": "A plugin for Obsidian.md which consolidates todo items into a single view.",
+  "author": "joelvaneenwyk",
+  "license": "MIT",
   "main": "main.js",
+  "packageManager": "npm@10.5.2+sha256.df0a1f7691654b94786013e5d5b80a873a7ffbae9c82c3bec8b5db76bc3b7dfd",
+  "keywords": [
+    "obsidian"
+  ],
   "scripts": {
     "dev": "node esbuild.config.mjs",
     "prepack": "npm run build",
@@ -11,25 +17,21 @@
     "check": "prettier . --check",
     "format": "prettier . --write",
     "version": "node version-bump.mjs && git add manifest.json manifest-beta.json versions.json",
-    "lint": "eslint . --config eslint.config.mjs",
+    "lint": "eslint \"**/*.ts\" --config eslint.config.mjs --fix",
     "spellcheck": "cspell --no-summary --gitignore --no-progress --no-color \"**\""
   },
-  "packageManager": "npm@10.5.2+sha256.df0a1f7691654b94786013e5d5b80a873a7ffbae9c82c3bec8b5db76bc3b7dfd",
-  "keywords": [
-    "obsidian"
-  ],
-  "author": "joelvaneenwyk",
-  "license": "MIT",
   "dependencies": {
     "@tsconfig/svelte": "^5.0.4",
     "@types/markdown-it": "^14.0.1",
     "@types/node": "^20.12.7",
-    "@typescript-eslint/eslint-plugin": "7.6.0",
-    "@typescript-eslint/parser": "7.6.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
     "builtin-modules": "3.3.0",
     "cspell": "^8.7.0",
     "esbuild": "0.20.2",
     "esbuild-svelte": "^0.8.0",
+    "eslint-plugin-functional": "^6.5.1",
+    "eslint-plugin-import": "^2.29.1",
     "markdown-it": "^14.1.0",
     "minimatch": "^9.0.4",
     "obsidian": "^1.5.7-1",

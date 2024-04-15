@@ -21,7 +21,7 @@ export const removeTagFromText = (text: string, tag: string) => {
 
 export const getTagMeta = (tag: string): TagMeta => {
   const tagMatch = /^\#([^\/]+)\/?(.*)?$/.exec(tag)
-  // @ts-ignore
+  // @ts-expect-error
   if (!tagMatch) return {main: null, sub: null}
   const [full, main, sub] = tagMatch
   return {main, sub}
@@ -88,7 +88,7 @@ export const getFileFromPath = (vault: Vault, path: string) => {
   let file = vault.getAbstractFileByPath(path)
   if (file instanceof TFile) return file
   const files = vault.getFiles()
-  // @ts-ignore
+  // @ts-expect-error
   file = files.find(e => e.name === path)
   if (file instanceof TFile) return file
 }

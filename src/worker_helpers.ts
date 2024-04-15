@@ -18,7 +18,7 @@ export const workerizeFunction = async <T extends (...args: any) => any>(fn: T) 
       worker.removeEventListener('message', listener)
     }
     worker.addEventListener('message', listener)
-    // @ts-ignore
+    // @ts-expect-error
     return new Promise(r => r(null))
   }
 }

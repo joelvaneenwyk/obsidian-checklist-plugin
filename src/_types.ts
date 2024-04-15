@@ -47,7 +47,7 @@ export type FileInfo = {
   validTags: TagCache[]
 }
 
-// @ts-ignore
+// @ts-expect-error
 export type TagMeta = {main: string; sub: string}
 export type LinkMeta = {filePath: string; linkName: string}
 
