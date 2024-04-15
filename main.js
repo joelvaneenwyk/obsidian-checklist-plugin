@@ -1328,7 +1328,7 @@ var groupTodos = (items, groupBy, sortGroups, sortItems, subGroups, subGroupSort
         subGroupSort,
         sortItems,
         false,
-        // @ts-ignore
+        // @ts-expect-error
         null,
       )
   return nonEmptyGroups
@@ -9919,14 +9919,14 @@ var formTodo = (line, file, links, lineNum, tagMeta) => {
     checked: todoLineIsChecked(line),
     filePath: file.file.path,
     fileName: file.file.name,
-    // @ts-ignore
+    // @ts-expect-error
     fileLabel: getFileLabelFromName(file.file.name),
     fileCreatedTs: file.file.stat.ctime,
     rawHTML: md.render(tagStripped),
     line: lineNum,
     spacesIndented,
     fileInfo: file,
-    // @ts-ignore
+    // @ts-expect-error
     originalText: rawText,
   }
 }
@@ -10103,11 +10103,11 @@ function instance2($$self, $$props, $$invalidate) {
     const target = ev.target
     if (target.tagName === 'A') {
       ev.stopPropagation()
-      if (target.dataset.type === 'link') {
+      if (target.dataset.filepath && target.dataset.type === 'link') {
         navToFile(app, target.dataset.filepath, ev, item2 === null || item2 === void 0 ? void 0 : item2.line)
       } else if (target.dataset.type === 'tag') {
       }
-    } else {
+    } else if (item2) {
       navToFile(app, item2.filePath, ev, item2 === null || item2 === void 0 ? void 0 : item2.line)
     }
   }
