@@ -9,6 +9,13 @@
   "keywords": [
     "obsidian"
   ],
+  "files": [
+    "main.js",
+    "styles.css",
+    "manifest.json",
+    "manifest-beta.json",
+    "versions.json"
+  ],
   "scripts": {
     "dev": "node esbuild.config.mjs",
     "prepack": "npm run build",

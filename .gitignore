@@ -18,7 +18,10 @@ dist/
 src/**/*.js
 src/**/*.js.map
 
-obsidian-checklist*.tgz
+/*obsidian-checklist*.tgz
 
 package-lock.json
 bun.lockb
+pnpm-lock.yaml
+
+main.css
