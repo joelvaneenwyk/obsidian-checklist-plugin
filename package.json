@@ -22,7 +22,7 @@
     "@tsconfig/svelte": "^5.0.4",
     "@types/markdown-it": "^14.0.0",
     "@types/node": "^20.12.7",
-    "@typescript-eslint/eslint-plugin": "7.6.0",
+    "@typescript-eslint/eslint-plugin": "7.7.0",
     "@typescript-eslint/parser": "7.6.0",
     "builtin-modules": "3.3.0",
     "esbuild": "0.20.2",
