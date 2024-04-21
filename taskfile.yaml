@@ -2,11 +2,12 @@
 
 version: '3'
 
-vars:
-  GREETING: Hello, World!
-
 tasks:
   default:
     cmds:
-      - echo "{{.GREETING}}"
-    silent: true
+      - cmd: npm install
+      - cmd: npm run build
+      - cmd: npm run format
+      - cmd: npm run lint
+      - cmd: npm run spellcheck
+    silent: false
