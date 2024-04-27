@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "@tsconfig/svelte": "^5.0.4",
-    "@types/markdown-it": "^14.0.0",
+    "@types/markdown-it": "^14.0.1",
     "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "7.7.1",
     "@typescript-eslint/parser": "7.6.0",
