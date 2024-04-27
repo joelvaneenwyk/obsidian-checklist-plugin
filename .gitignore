@@ -1,3 +1,7 @@
+.venv/
+bun.lockb
+/*.tgz
+/main.css
 # Intellij
 *.iml
 .vs/
