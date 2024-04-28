@@ -62,7 +62,7 @@ export const groupTodos = (
         subGroupSort,
         sortItems,
         false,
-        // @ts-ignore
+        // @ts-expect-error
         null,
       )
 

@@ -12,7 +12,7 @@ if you want to view the source, please visit the github repository of this plugi
 
 const prod = process.argv[2] === 'production'
 
-esbuild
+await esbuild
   .build({
     banner: {
       js: banner,
@@ -61,4 +61,10 @@ esbuild
     ],
     outfile: 'main.js',
   })
-  .catch(() => process.exit(1))
+  .catch(() => {
+    process.exit(1)
+  })
+  .finally(() => {
+    console.log('Build finished. 🚀')
+    process.exit(0)
+  })

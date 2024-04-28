@@ -1,0 +1,13 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - cmd: npm install
+      - cmd: npm run build
+      - cmd: npm run format
+      - cmd: npm run lint
+      - cmd: npm run spellcheck
+    silent: false

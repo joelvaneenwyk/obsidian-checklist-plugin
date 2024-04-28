@@ -1,6 +1,13 @@
+.venv/
+bun.lockb
+/*.tgz
+/main.css
 # Intellij
 *.iml
 .vs/
+
+# python
+.venv/
 
 # npm
 node_modules
@@ -15,4 +22,10 @@ dist/
 src/**/*.js
 src/**/*.js.map
 
-obsidian-checklist*.tgz
+/*obsidian-checklist*.tgz
+
+package-lock.json
+bun.lockb
+pnpm-lock.yaml
+
+main.css

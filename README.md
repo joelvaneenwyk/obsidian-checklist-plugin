@@ -4,7 +4,8 @@
 
 This plugin for [Obsidian](https://obsidian.md/) consolidates checklists from across files into a single view.
 
-![screenshot-main](https://raw.githubusercontent.com/joelvaneenwyk/obsidian-checklist/develop/images/screenshot-two-files.png)
+<!-- markdownlint-disable MD033 -->
+<img alt="screenshot-main" src="https://raw.githubusercontent.com/joelvaneenwyk/obsidian-checklist/develop/images/screenshot-two-files.png" width="50%"/>
 
 ## Usage
 

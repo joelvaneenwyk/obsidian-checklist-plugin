@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: detect-private-key
+      - id: forbid-submodules
+      - id: check-added-large-files
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: 'v9.0.0'
+    hooks:
+      - id: eslint
+        args: [--fix]
+        exclude: main.js
+  - repo: local
+    hooks:
+      - id: format
+        language: node
+        name: format
+        entry: npm run format || npm run check
+        pass_filenames: false
+        verbose: true
+        types: [text]
+        stages: [pre-commit]

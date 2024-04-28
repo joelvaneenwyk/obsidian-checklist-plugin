@@ -18,7 +18,9 @@
 </script>
 
 <section class="group {group.className}">
+  <!-- svelte-ignore a11y-no-static-element-interactions -->
   <header class={`group-header ${group.type}`}>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="title" on:click={clickTitle}>
       {#if group.type === "page"}
         {group.pageName}

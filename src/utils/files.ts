@@ -10,7 +10,7 @@ export const navToFile = async (app: App, path: string, ev: MouseEvent, line?: n
   const leaf = app.workspace.getLeaf(mod)
   await leaf.openFile(file)
   if (line) {
-    // @ts-ignore
+    // @ts-expect-error
     app.workspace.getActiveViewOfType(MarkdownView).editor.setCursor(line)
   }
 }
@@ -20,7 +20,7 @@ export const hoverFile = (event: MouseEvent, app: App, filePath: string) => {
   const timeoutHandle = setTimeout(() => {
     app.workspace.trigger('link-hover', {}, targetElement, filePath, filePath)
   }, 800)
-  // @ts-ignore
+  // @ts-expect-error
   targetElement.addEventListener('mouseleave', () => {
     clearTimeout(timeoutHandle)
   })

@@ -3,6 +3,8 @@ name: Build Obsidian Plugin
 on:
   push:
     branches: [main, develop]
+    tags:
+      - '*'
   pull_request:
     branches: [main, develop]
   workflow_dispatch:
@@ -13,6 +15,12 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+      discussions: write
 
     steps:
       - uses: actions/checkout@v4
@@ -46,7 +54,6 @@ jobs:
         uses: softprops/action-gh-release@v2.0.4
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          VERSION: ${{ github.ref }}
         with:
           draft: false
           prerelease: false
@@ -54,4 +61,15 @@ jobs:
             ./${{ env.PLUGIN_NAME }}.zip
             ./main.js
             ./manifest.json
+            ./manifest-beta.json
+            ./styles.css
+
+      - uses: actions/upload-artifact@v4
+        name: Upload Zip
+        with:
+          name: ${{ env.PLUGIN_NAME }}.zip
+          path: |
+            ./main.js
+            ./manifest.json
+            ./manifest-beta.json
             ./styles.css

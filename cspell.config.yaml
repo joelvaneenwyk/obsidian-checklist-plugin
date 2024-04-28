@@ -1,10 +1,10 @@
 ignorePaths: []
 dictionaryDefinitions:
-  - name: 'custom-dictionary'
-    path: ./.cspell/custom-dictionary.txt
+  - name: 'obsidian-checklist'
+    path: ./.cspell/obsidian-checklist.txt
     addWords: true
 dictionaries:
-  - 'custom-dictionary'
+  - 'obsidian-checklist'
 words: []
 ignoreWords: []
 import: []

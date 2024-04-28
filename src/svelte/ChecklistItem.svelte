@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { App } from "obsidian"
+  import type {App} from 'obsidian'
 
-  import type { LookAndFeel, TodoItem } from "src/_types"
-  import { navToFile, toggleTodoItem } from "src/utils"
-  import CheckCircle from "./CheckCircle.svelte"
+  import type {LookAndFeel, TodoItem} from 'src/_types'
+  import {navToFile, toggleTodoItem} from 'src/utils'
+  import CheckCircle from './CheckCircle.svelte'
 
   export let item: TodoItem
   export let lookAndFeel: LookAndFeel
@@ -17,15 +17,14 @@
 
   const handleClick = (ev: MouseEvent, item?: TodoItem) => {
     const target: HTMLElement = ev.target as any
-    if (target.tagName === "A") {
+    if (target.tagName === 'A') {
       ev.stopPropagation()
-      if (target.dataset.type === "link") {
+      if (target.dataset.filepath && target.dataset.type === 'link') {
         navToFile(app, target.dataset.filepath, ev, item?.line)
-      } else if (target.dataset.type === "tag") {
+      } else if (target.dataset.type === 'tag') {
         // goto tag
       }
-    }
-    else {
+    } else if (item) {
       navToFile(app, item.filePath, ev, item?.line)
     }
   }
@@ -37,14 +36,15 @@
 <li class={`${lookAndFeel}`}>
   <button
     class="toggle"
-    on:click={(ev) => {
+    on:click={ev => {
       toggleItem(item)
       ev.stopPropagation()
-    }}
-  >
+    }}>
     <CheckCircle checked={item.checked} />
   </button>
-  <div bind:this={contentDiv} on:click={(ev) => handleClick(ev, item)} class="content" />
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y-no-static-element-interactions -->
+  <div bind:this={contentDiv} on:click={ev => handleClick(ev, item)} class="content" />
 </li>
 
 <style>

@@ -1,8 +1,21 @@
 {
-  "name": "obsidian-checklist",
+  "name": "@mycoshiro/obsidian-checklist",
   "version": "2.2.14-beta.3",
   "description": "A plugin for Obsidian.md which consolidates todo items into a single view.",
+  "author": "joelvaneenwyk",
+  "license": "MIT",
   "main": "main.js",
+  "packageManager": "npm@10.5.2+sha256.df0a1f7691654b94786013e5d5b80a873a7ffbae9c82c3bec8b5db76bc3b7dfd",
+  "keywords": [
+    "obsidian"
+  ],
+  "files": [
+    "main.js",
+    "styles.css",
+    "manifest.json",
+    "manifest-beta.json",
+    "versions.json"
+  ],
   "scripts": {
     "dev": "node esbuild.config.mjs",
     "prepack": "npm run build",
@@ -10,30 +23,32 @@
     "build:tsc": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
     "check": "prettier . --check",
     "format": "prettier . --write",
-    "version": "node version-bump.mjs && git add manifest.json manifest-beta.json versions.json"
+    "version": "node version-bump.mjs && git add manifest.json manifest-beta.json versions.json",
+    "lint": "eslint \"**/*.ts\" --config eslint.config.mjs --fix",
+    "spellcheck": "cspell --no-summary --gitignore --no-progress --no-color \"**\""
   },
-  "packageManager": "npm@10.5.2+sha256.df0a1f7691654b94786013e5d5b80a873a7ffbae9c82c3bec8b5db76bc3b7dfd",
-  "keywords": [
-    "obsidian"
-  ],
-  "author": "joelvaneenwyk",
-  "license": "MIT",
   "dependencies": {
     "@tsconfig/svelte": "^5.0.4",
-    "@types/markdown-it": "^14.0.0",
+    "@types/markdown-it": "^14.0.1",
     "@types/node": "^20.12.7",
-    "@typescript-eslint/eslint-plugin": "7.7.1",
-    "@typescript-eslint/parser": "7.6.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
     "builtin-modules": "3.3.0",
+    "cspell": "^8.7.0",
     "esbuild": "0.20.2",
     "esbuild-svelte": "^0.8.0",
+    "eslint-plugin-functional": "^6.5.1",
+    "eslint-plugin-import": "^2.29.1",
     "markdown-it": "^14.1.0",
     "minimatch": "^9.0.4",
     "obsidian": "^1.5.7-1",
-    "svelte": "^4.2.13",
+    "prettier": "^3.2.5",
+    "svelte": "^4.2.14",
     "svelte-preprocess": "^5.1.3",
     "tslib": "^2.6.2",
-    "typescript": "^5.4.5",
-    "prettier": "^3.2.5"
+    "typescript": "^5.4.5"
+  },
+  "peerDependencies": {
+    "eslint": "*"
   }
 }
