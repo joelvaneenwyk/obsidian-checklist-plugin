@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  PLUGIN_NAME: obsidian-tasklist-plugin
+  PLUGIN_NAME: obsidian-checklist
 
 jobs:
   build:
