@@ -42,7 +42,7 @@
     "eslint-plugin-functional": "^6.5.1",
     "eslint-plugin-import": "^2.29.1",
     "markdown-it": "^14.1.0",
-    "minimatch": "^9.0.4",
+    "minimatch": "^10.0.1",
     "obsidian": "^1.5.7-1",
     "prettier": "^3.2.5",
     "svelte": "^4.2.15",
