@@ -39,7 +39,7 @@
     "cspell": "^8.7.0",
     "esbuild": "0.21.4",
     "esbuild-svelte": "^0.8.0",
-    "eslint-plugin-functional": "^6.5.1",
+    "eslint-plugin-functional": "^7.0.0",
     "eslint-plugin-import": "^2.29.1",
     "markdown-it": "^14.1.0",
     "minimatch": "^9.0.4",
